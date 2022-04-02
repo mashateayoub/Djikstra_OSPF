@@ -37,7 +37,7 @@ def djikstra(graph, start):
 
         for neighbor, weight in graph[router]:
             new_dist = distance + weight
-            
+
             if new_dist < NeighborsDist[neighbor]:
                 NeighborsDist[neighbor] = new_dist
                 heapq.heappush(temp, (new_dist, neighbor))
@@ -46,13 +46,13 @@ def djikstra(graph, start):
 
 if __name__=="__main__":
     graph = {
-            'R1': [('R2', 2), ('R3', 5), ('R4', 1)],
+            'R1': [('R2', 6), ('R3', 5), ('R4', 1)],
             'R2': [('R1', 2), ('R4', 2), ('R3', 3)],
-            'R3': [('R2', 3), ('R1', 5), ('R4', 3), ('R5', 1), ('R6', 5)],
-            'R4': [('R1', 1), ('R2', 2), ('R3', 3), ('R5', 1)],
-            'R5': [('R4', 1), ('R3', 1), ('R6', 1)],
+            'R3': [('R2', 3), ('R1', 5), ('R5', 1), ('R6', 5)],
+            'R4': [('R1', 1), ('R2', 2)],
+            'R5': [('R3', 1), ('R6', 1)],
             'R6': [('R3', 5), ('R5', 1)],
         }
 
-    actual = djikstra(graph, 'R4')
-    print(actual)
+    result = djikstra(graph, 'R4')
+    print(result)
